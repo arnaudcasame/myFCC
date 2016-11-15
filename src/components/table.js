@@ -6,12 +6,10 @@ class Table extends Component {
 		this.state = {};
 	}
 
-	
-
 	render(){
-		var temporaire = this.props.data;
+		let temporaire = this.props.data;
 
-		var show = null;
+		let show = null;
 
 	    if(this.props.view === 'Recent'){
 	    	show = 'Alltime';
@@ -19,7 +17,7 @@ class Table extends Component {
 	      	show = 'Recent';
 	    }
 
-	    var campers = temporaire ? temporaire.map((camper, i) => {
+	    let campers = temporaire ? temporaire.map((camper, i) => {
 	        return (
 	            <tr key={i}>
 	              <td className="mdl-data-table__cell--non-numeric">{i+1}</td>

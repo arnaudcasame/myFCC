@@ -14,17 +14,17 @@ class App extends Component {
     };
   }
 
+  componentWillMount() {
+    this.getData();
+  }
+
   handleDisplay(){
     this.setState({
       alltime: !this.state.alltime,
       view: this.state.alltime ? 'Alltime' : 'Recent',
       url: this.state.alltime ? 'alltime.json' : 'recent.json'
     });
-    this.getData();
-  }
-
-  componentWillMount() {
-    this.getData();
+    
   }
 
   getData() {
@@ -43,8 +43,7 @@ class App extends Component {
   }
 
   render() {
-    
-
+    this.getData();
     return (
       <div className="App">
           <button onClick={this.handleDisplay.bind(this)}>View {this.state.view}</button>
