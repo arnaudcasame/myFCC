@@ -1,28 +1,24 @@
 import React, { Component } from 'react';
 
-class Recent extends Component {
+class Table extends Component {
 	constructor(props){
 		super()
 		this.state = {};
 	}
 
-	componentWillMount() {
-    
-     var xhr = new XMLHttpRequest();
-      xhr.open('GET', 'recent.json');
-      xhr.onreadystatechange = ()=>{
-        if(xhr.readyState === 4 && xhr.status === 200){
-          var informations = JSON.parse(xhr.responseText);
-          this.setState({
-            data : informations
-          });
-        }
-      }
-      xhr.send(null);    
-  	}
+	
 
 	render(){
-		var temporaire = this.state.data;
+		var temporaire = this.props.data;
+
+		var show = null;
+
+	    if(this.props.view === 'Recent'){
+	    	show = 'Alltime';
+	    }else{
+	      	show = 'Recent';
+	    }
+
 	    var campers = temporaire ? temporaire.map((camper, i) => {
 	        return (
 	            <tr key={i}>
@@ -40,7 +36,7 @@ class Recent extends Component {
 		            <tr>
 		              <th className="mdl-data-table__cell--non-numeric">#</th>
 		              <th className="mdl-data-table__cell--non-numeric">username</th>
-		              <th>recent</th>
+		              <th>{show}</th>
 		              <th>recent</th>
 		            </tr>
 		          </thead>
@@ -52,4 +48,4 @@ class Recent extends Component {
 	}
 }
 
-export default Recent;
+export default Table;
